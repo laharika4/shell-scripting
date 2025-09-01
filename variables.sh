@@ -1,7 +1,7 @@
 #!.sh
 
- read -p -s "please enter user name :: " USERNAME
- read -p -s "please enter passowrd :: " PASSWORD
+ read -s -p "please enter user name :: " USERNAME
+ read -s -p "please enter passowrd :: " PASSWORD
 
  echo "username is $USERNAME"
  echo "password is$PASSWORD"
