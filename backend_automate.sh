@@ -12,7 +12,7 @@ timestampe=$(date +%Y-%m-%d-%H-%M-%s)
 log_filename="$log_path/$file-$timestampe"
 
 variable(){
-    if [ $1 -ne 0]
+    if [ $1 -ne 0 ]
      then 
         echo  -e "$2 ...$r Failure $n"
     else
@@ -63,7 +63,7 @@ variable $? "installation of mysql"
 mysql -h database.devopsprep.online -u root -pExpenseApp@1 < /app/schema/backend.sql  &>>$log_filename
 variable   $? "connecting and executing sql db"
 
-cp /git/shell-scripting/backend.service  /etc/ssytemd/system/backend.service
+cp ~/git/shell-scripting/backend.service  /etc/ssytemd/system/backend.service
 variable $? "copying service file"
 
 systemctl deamon-reload &>>$log_filename
