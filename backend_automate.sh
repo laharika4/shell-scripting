@@ -63,7 +63,7 @@ variable $? "installation of mysql"
 mysql -h database.devopsprep.online -u root -pExpenseApp@1 < /app/schema/backend.sql  &>>$log_filename
 variable   $? "connecting and executing sql db"
 
-cp ~/git/shell-scripting/backend.service  /etc/ssytemd/system/backend.service
+cp /home/ec2-user/git/shell-scripting/backend.service  /etc/ssytemd/system/backend.service
 variable $? "copying service file"
 
 systemctl deamon-reload &>>$log_filename
