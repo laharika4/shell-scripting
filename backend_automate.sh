@@ -6,7 +6,7 @@ g='\e[32m'
 y='\e[33m'
 n='\e[0m'
 
-log_path="/var/log/bakend_logs"
+log_path="/var/log/backend_logs"
 file=$(echo $0 | cut -d "." -f1)
 timestampe=$(date +%Y-%m-%d-%H-%M-%s)
 log_filename="$log_path/$file-$timestampe"
@@ -20,7 +20,7 @@ variable(){
     fi
 }
 
-mkdir -p /var/log/bakend_logs
+mkdir -p /var/log/backend_logs
 
 dnf  module disable nodejs -y &>>$log_filename
 # if [ $? -ne 0 ]
@@ -31,10 +31,10 @@ dnf  module disable nodejs -y &>>$log_filename
 dnf module enable nodejs:20 -y &>>$log_filename
 # if [ $? -ne 0 ]
 #   then 
-     variable $? " disabling "
+     variable $? " enabling version 20"
 #fi
 
-dnf install nodjs -y &>>$log_filename
+dnf install nodejs -y &>>$log_filename
 variable $? "installation of nodjs"
 
 id expense &>>$log_filename
@@ -63,7 +63,7 @@ variable $? "installation of mysql"
 mysql -h database.devopsprep.online -u root -pExpenseApp@1 < /app/schema/backend.sql  &>>$log_filename
 variable   $? "connecting and executing sql db"
 
-cp /home/ec2-user/git/shell-scripting/backend.service  /etc/ssytemd/system/backend.service
+cp /home/ec2-user/git/shell-scripting/backend.service  /etc/systemd/system/backend.service
 variable $? "copying service file"
 
 systemctl deamon-reload &>>$log_filename
