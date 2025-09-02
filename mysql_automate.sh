@@ -22,6 +22,9 @@ variable(){
     fi
 }
 
+mkdir -p /var/log/mysql-server-logs
+
+
 echo -e "$g execution starts here $n " &>>$log_filename
 if [ $userid -ne 0 ]
  then 
@@ -46,7 +49,7 @@ variable $? " $g starting $n"
 mysql -h  database.devopsprep.online -u root -pExpenseApp@1 -e "show databases;" &>>$log_filename
 if [ $? -ne 0 ]
  then 
-      mysql_secure_installation --set-root-pass ExpenseApp@1 
+    mysql_secure_installation --set-root-pass ExpenseApp@1 
     validate $? "$g setting db password $n"
 else
   echo -e "$y skipping password set since already set $n"
