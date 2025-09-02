@@ -38,3 +38,4 @@ if [ $? -ne 0 ]
     fi
 else
   echo "git already installed"
+fi
