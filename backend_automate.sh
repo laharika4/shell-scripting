@@ -66,7 +66,7 @@ variable   $? "connecting and executing sql db"
 cp /home/ec2-user/git/shell-scripting/backend.service  /etc/systemd/system/backend.service
 variable $? "copying service file"
 
-systemctl deamon-reload &>>$log_filename
+systemctl daemon-reload &>>$log_filename
 variable $? "reloading backend"
 
 systemctl enable backend &>>$log_filename
