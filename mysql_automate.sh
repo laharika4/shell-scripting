@@ -43,7 +43,7 @@ variable $? "$g enabling $n"
 systemctl start mysqld
 variable $? " $g starting $n"
 
-mysql -h  database.devopsprep.online -u root -pExpenseApp@1 "show databases;"
+mysql -h  database.devopsprep.online -u root -pExpenseApp@1 -e "show databases;"
 if [ $? -ne 0 ]
  then 
     mysql -h database.devopsprep.online --set-root-pass ExpenseApp@1 
