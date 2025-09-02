@@ -57,6 +57,8 @@ rm -rf /app/*
 unzip /tmp/backend.zip
 variable $? "unzipping code"
 
+npm install
+variable $? "installation of npm in ap directory"
 dnf install mysql -y
 variable $? "installation of mysql"
 
