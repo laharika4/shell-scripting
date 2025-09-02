@@ -22,7 +22,7 @@ variable(){
     fi
 }
 
-echo -e "$g execution starts here $n "
+echo -e "$g execution starts here $n " &>>$log_filename
 if [ $userid -ne 0 ]
  then 
     echo -e " $r user dosen't have the permision $n "
@@ -32,7 +32,7 @@ fi
 dnf list installed mysql-server
 if [ $? -ne 0 ]
   then 
-     dnf install mysql-server -y
+     dnf install mysql-server -y &>>$log_filename
 else
    echo -e " $g mysql already installed $n"
 fi
@@ -43,10 +43,10 @@ variable $? "$g enabling $n"
 systemctl start mysqld
 variable $? " $g starting $n"
 
-mysql -h  database.devopsprep.online -u root -pExpenseApp@1 -e "show databases;"
+mysql -h  database.devopsprep.online -u root -pExpenseApp@1 -e "show databases;" &>>$log_filename
 if [ $? -ne 0 ]
  then 
-    mysql -h database.devopsprep.online --set-root-pass ExpenseApp@1 
+      mysql_secure_installation --set-root-pass ExpenseApp@1 
     validate $? "$g setting db password $n"
 else
   echo -e "$y skipping password set since already set $n"
