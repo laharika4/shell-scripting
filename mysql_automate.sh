@@ -35,7 +35,7 @@ if [ $? -ne 0 ]
      dnf install mysql-server -y
 else
    echo -e " $g mysql already installed $n"
-
+fi
 
 systemctl enable mysqld
 variable $? "$g enabling $n"
