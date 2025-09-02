@@ -22,27 +22,28 @@ fi
 
 }
 
+echo -e "$r started executing at : $timestampe $n" &>>$log_filename
 if [ $userid -ne 0 ]
  then 
     echo -e "$r you donn't have permixxion to this installation $n"
     exit 1
 fi
 
-dnf list installed mysql &>>$log_filename
+dnf list installed mysql 
 
 if [ $? -ne 0 ]
  then 
-    dnf install mysql -y
+    dnf install mysql -y &>>$log_filename
       VALIDATE $? "installation of mysql"
 else
     echo -e "$y mysql already installed $n "
 fi
 
-dnf list installed git &>>$log_filename
+dnf list installed git 
 
 if [ $? -ne 0 ]
  then
-    dnf install git -y &>>$log_filename
+    dnf install git -y  &>>$log_filename
      VALIDATE $? "installation of git"
 else
   echo  -e "$y git already installed $n"
