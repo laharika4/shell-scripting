@@ -8,7 +8,7 @@ n="\e[0m"
 
 log_path="/var/logs/shell-scripting-logs"
 log_file=$(echo $0 | cut -d "." -f1)
-timestampe=$(data +%Y-%m-%d-%H-%M-%s)
+timestampe=$(date +%Y-%m-%d-%H-%M-%s)
 log_filename="$log_path/$log_file-$timestampe.log"
 
 
