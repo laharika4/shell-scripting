@@ -29,7 +29,7 @@ if [ $userid -ne 0 ]
 fi
 
 mkdir -p /var/log/frontend_logs/    &>>$log_filename
-variable $? "log directory created "
+
 
 
 dnf install nginx -y
