@@ -14,7 +14,7 @@ if [ $userid -ne 0 ]
     exit 1
 fi
 
-files_tobe_deleted=(find . $sourcefolder -name "*.log" -mtime +14)
+files_tobe_deleted=(find $sourcefolder -name "*.log" -mtime +14)
 echo "files that are to be deleted: $files_tobe_deleted"
 
 while read -r file
