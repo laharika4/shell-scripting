@@ -28,11 +28,11 @@ if [ $userid -ne 0 ]
      exit 1
 fi
 
-mkdir -p /var/log/frontend_logs/    &>>$log_filename
+mkdir -p /var/log/frontend_logs    &>>$log_filename
 
 
 
-dnf install nginx -y
+dnf install nginx -y   &>>$log_filename
 variable $? "installation of nginx"
 
 rm -rf /usr/share/nginx/html/*
