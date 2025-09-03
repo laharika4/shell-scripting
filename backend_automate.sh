@@ -23,17 +23,11 @@ variable(){
 mkdir -p /var/log/backend_logs
 
 dnf  module disable nodejs -y &>>$log_filename
-# if [ $? -ne 0 ]
-#   then 
       variable $? " disabling "
-# fi
 
 dnf module enable nodejs:20 -y &>>$log_filename
-# if [ $? -ne 0 ]
-#   then 
      variable $? " enabling version 20"
-#fi
-
+      
 dnf install nodejs -y &>>$log_filename
 variable $? "installation of nodjs"
 

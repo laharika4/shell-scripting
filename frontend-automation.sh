@@ -28,7 +28,7 @@ if [ $userid -ne 0 ]
      exit 1
 fi
 
-mkdir -p /var/log/frontend_logs    &>>$log_filename
+ sudo mkdir -p /var/log/frontend_logs    &>>$log_filename
 
 
 
@@ -42,7 +42,7 @@ systemctl enable nginx
 variable $? "enabling  nginx"
 
 systemctl start nginx
-variable $? "starting nginx"
+variable $? "starting nginx"  &>>$log_filename
 
 curl -o /tmp/frontend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip
 variable $? "getting code from repo"
