@@ -50,7 +50,7 @@ mysql -h  172.31.38.124 -u root -pExpenseApp@1 -e "show databases;" &>>$log_file
 if [ $? -ne 0 ]
  then 
     mysql_secure_installation --set-root-pass ExpenseApp@1 
-    validate $? "$g setting db password $n"
+    variable $? "$g setting db password $n"
 else
   echo -e "$y skipping password set since already set $n"
 fi
