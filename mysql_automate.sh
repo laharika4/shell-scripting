@@ -46,7 +46,7 @@ variable $? "$g enabling $n"
 systemctl start mysqld
 variable $? " $g starting $n"
 
-mysql -h  database.devopsprep.online -u root -pExpenseApp@1 -e "show databases;" &>>$log_filename
+mysql -h  172.31.38.124 -u root -pExpenseApp@1 -e "show databases;" &>>$log_filename
 if [ $? -ne 0 ]
  then 
     mysql_secure_installation --set-root-pass ExpenseApp@1 

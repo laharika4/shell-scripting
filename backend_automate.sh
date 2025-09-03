@@ -62,7 +62,7 @@ variable $? "installation of npm in ap directory"
 dnf install mysql -y
 variable $? "installation of mysql"
 
-mysql -h database.devopsprep.online -u root -pExpenseApp@1 < /app/schema/backend.sql  &>>$log_filename
+mysql -h 172.31.38.124 -u root -pExpenseApp@1 < /app/schema/backend.sql  &>>$log_filename
 variable   $? "connecting and executing sql db"
 
 cp /home/ec2-user/git/shell-scripting/backend.service  /etc/systemd/system/backend.service
