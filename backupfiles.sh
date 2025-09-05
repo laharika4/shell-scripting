@@ -53,7 +53,12 @@ if [ -n "$files" ]
        zip_file="$destination_path""app-logs-$timestampe.zip"
        $(find $source_path -name "*.log" -mtime +$days) | zip -r "$zip_file" /home/ec2-user/logs
         echo -e " $r $zip_file $n"
-    
+        if [ -f "$zip_file" ]
+          then 
+            echo -e "$r success "
+        else
+            echo -e " $r failed"
+        fi
 
     else
         echo -e "$r no files to zip and delete them $n" 
