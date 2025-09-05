@@ -50,9 +50,9 @@ echo -e "$g files are : $files"
 if [ -n "$files" ]
     then 
        echo -e "$r files in source folder : $g $files $n"
-       zip_file="$destination_path/app-logs-$timestampe.zip"
+       zip_file="$destination_path""app-logs-$timestampe.zip"
        $files | zip -@ "$zip_file"
-       
+
 
     else
         echo -e "$r no files to zip and delete them $n" 
