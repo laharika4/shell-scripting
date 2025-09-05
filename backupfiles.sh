@@ -46,7 +46,7 @@ if [ ! -d  $destination_path ]
      exit 1
 fi
 
-files=$(find $source_path -nmae "*.log" -mtime +14)
+files=$(find $source_path -name "*.log" -mtime +14)
 
 if [ -n "$files" ]
     then 
