@@ -55,9 +55,15 @@ if [ -n "$files" ]
         echo -e " $r $zip_file $n"
         if [ -f "$zip_file" ]
           then 
-            echo -e "$r success "
-        else
-            echo -e " $r failed"
+           echo -e " $g successfully created the zip files that are greaterthan $days $n"
+               while read -r filepath
+                 do 
+                    echo -e " $r deleteting files after zipping from : $filepath $n" &>>log_filename
+                     rm -rf $filepath
+                     echo -e "$r deleted files from path : $filepath $n"
+                     done <<< $files
+        else 
+            echo -e " $r error : failed to zip the files "
         fi
 
     else
