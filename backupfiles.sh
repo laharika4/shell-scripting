@@ -27,7 +27,6 @@ if [ $userid -ne 0 ]
 fi
 
 mkdir -p /home/ec2-user/logs
-echo -e "$g log_folder : $0"
 
 if [ $# -lt 2 ]
   then 
