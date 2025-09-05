@@ -47,7 +47,7 @@ fi
 
 files=$(find $source_path -name "*.log" -mtime +$days)
 echo -e "$g files are : $files"
-if [ -n "$files" ]
+if [ -n $files ]
     then 
        echo -e "$r files in source folder : $g $files $n"
        zip_files="$destination_path/app-log-$timestampe.zip"
