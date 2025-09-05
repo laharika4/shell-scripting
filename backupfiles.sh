@@ -52,19 +52,8 @@ if [ -n "$files" ]
        echo -e "$r files in source folder : $g $files $n"
        zip_file="$destination_path""app-logs-$timestampe.zip"
        $(find $source_path -name "*.log" -mtime +$days) | zip -r "$zip_file" /home/ec2-user/logs
-        echo -e "$r zip files : $zip_files $n"
-        if [ -f "$zip_files" ]
-           then 
-               echo -e " $g successfully created the zip files that are greaterthan $days $n"
-               while read -r filepath
-                 do 
-                    echo -e " $r deleteting files after zipping from : $filepath $n" &>>log_filename
-                     rm -rf $filepath
-                     echo -e "$r deleted files from path : $filepath $n"
-                     done <<< $files
-        else 
-            echo -e " $r error : failed to zip the files "
-        fi
+        echo -e " $r $zip_file $n"
+    
 
     else
         echo -e "$r no files to zip and delete them $n" 
