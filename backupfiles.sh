@@ -8,7 +8,7 @@ n="\e[0m"
 
 source_path=$1
 destination_path=$2
-days=${3 : -14}
+days=${3:-14}
 
 log_folder="/home/ec2-user/logs"
 file=$(echo $0 | cut -d "." -f1)
