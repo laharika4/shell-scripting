@@ -52,7 +52,7 @@ if [ -n "$files" ]
     then 
        echo -e "$r files in source folder : $files $n"
        zip_files="$destination_path/app-log-$timestampe.zip"
-         $(find $source_path -nmae "*.log" -mtime +14) | zip -@ "$zip_files"
+         $files | zip -@ "$zip_files"
         if [ -f "$zip_files "]
            then 
                echo -e " $g successfully created the zip files that are greaterthan $days $n"
