@@ -45,14 +45,14 @@ if [ ! -d  $destination_path ]
      exit 1
 fi
 
-files=$(find $source_path -name "*.log" -mtime +14)
+files=$(find $source_path -name "*.log" -mtime +$days)
 
 if [ -n "$files" ]
     then 
-       echo -e "$r files in source folder : 
-       $files $n"
+       echo -e "$r files in source folder : $g $files $n"
        zip_files="$destination_path/app-log-$timestampe.zip"
         echo $files |  sudo zip -@ "$zip_files"
+        echo -e "$r zip files : $zip_files $n"
         if [ -f "$zip_files" ]
            then 
                echo -e " $g successfully created the zip files that are greaterthan $days $n"
@@ -63,7 +63,7 @@ if [ -n "$files" ]
                      echo -e "$r deleted files from path : $filepath $n"
                      done <<< $files
         else 
-            echo -e " $r error : failed to zip the files since there are no files "
+            echo -e " $r error : failed to zip the files "
         fi
     else
         echo -e "$r no files to zip and delete them $n" 
