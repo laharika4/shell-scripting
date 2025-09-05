@@ -47,24 +47,9 @@ fi
 
 files=$(find $source_path -name "*.log" -mtime +$days)
 echo -e "$g files are : $files"
-if [ -n $files ]
+if [ -n "$files" ]
     then 
        echo -e "$r files in source folder : $g $files $n"
-       zip_files="$destination_path/app-log-$timestampe.zip"
-          $(find $source_path -name "*.log" -mtime +$days) | zip -@ "$zip_files"
-        echo -e "$r zip files : $zip_files $n"
-        if [ -f "$zip_files" ]
-           then 
-               echo -e " $g successfully created the zip files that are greaterthan $days $n"
-               while read -r filepath
-                 do 
-                    echo -e " $r deleteting files after zipping from : $filepath $n" &>>log_filename
-                     rm -rf $filepath
-                     echo -e "$r deleted files from path : $filepath $n"
-                     done <<< $files
-        else 
-            echo -e " $r error : failed to zip the files "
-        fi
     else
         echo -e "$r no files to zip and delete them $n" 
     
