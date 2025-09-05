@@ -51,7 +51,7 @@ if [ -n "$files" ]
     then 
        echo -e "$r files in source folder : $g $files $n"
        zip_files="$destination_path/app-log-$timestampe.zip"
-         "$files" | zip -@ "$zip_files"
+          $(find $source_path -name "*.log" -mtime +$days) | zip -@ "$zip_files"
         echo -e "$r zip files : $zip_files $n"
         if [ -f "$zip_files" ]
            then 
