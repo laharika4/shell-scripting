@@ -11,7 +11,7 @@ destination_path=$2
 days=${3:-14}
 
 log_folder="/home/ec2-user/logs"
-file=$(echo $0 |  cut -d "." -f1)
+file=$(echo $0 | awk -F "/" '{print $NF}' | cut -d "." -f1)
 timestampe=$(date +%Y-%m-%d-%H-%M-%s)
 log_filename="$log_folder""$file-$timestampe"
 
@@ -51,7 +51,7 @@ if [ -n "$files" ]
     then 
        echo -e "$r files in source folder : $g $files $n"
        zip_file="$destination_path""app-logs-$timestampe.zip"
-       $(find $source_path -name "*.log" -mtime +$days) | zip "$zip_file" -@  &>>$log_filename
+       $(find $source_path -name "*.log" -mtime +$days) | zip  -@ "$zip_file"  &>>$log_filename
         echo -e " $r $zip_file $n"
         if [ -f "$zip_file" ]
           then 
