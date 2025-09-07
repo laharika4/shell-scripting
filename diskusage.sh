@@ -2,7 +2,7 @@
 
 diskusage=$(df -hT |grep xfs)
 disk_trshold=5
-
+sendmail=""
 while read -r line
 do 
   usage=$(echo $line  |awk -F " " '{print $6F}'|cut -d "%" -f1 )
