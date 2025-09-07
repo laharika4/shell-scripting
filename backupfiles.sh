@@ -11,7 +11,7 @@ destination_path=$2
 days=${3:-14}
 
 log_folder="/home/ec2-user/logs"
-file=$(echo $0 | cut -d "." -f1)
+file=$(echo $0 | awk -F "/" '{print $NF}' | cut -d "." -f1)
 timestampe=$(date +%Y-%m-%d-%H-%M-%s)
 log_filename="$log_folder/$file-$timestampe"
 
