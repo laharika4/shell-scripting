@@ -26,7 +26,7 @@ if [ $userid -ne 0 ]
        exit 1
 fi
 
-mkdir -p /home/ec2-user/logs
+mkdir -p /home/ec2-user/logs &>>$log_filename
 
 if [ $# -lt 2 ]
   then 
@@ -45,20 +45,20 @@ if [ ! -d  $destination_path ]
      exit 1
 fi
 
-files=$(find $source_path -name "*.log" -mtime +$days)
+files=$(find $source_path -name "*.log" -mtime +$days) &>>$log_filename
 echo -e "$g files are : $files"
 if [ -n "$files" ]
     then 
        echo -e "$r files in source folder : $g $files $n"
        zip_file="$destination_path""app-logs-$timestampe.zip"
-       $(find $source_path -name "*.log" -mtime +$days) | zip -r "$zip_file" /home/ec2-user/logs
+       $(find $source_path -name "*.log" -mtime +$days) | zip -r "$zip_file" /home/ec2-user/logs &>>$log_filename
         echo -e " $r $zip_file $n"
         if [ -f "$zip_file" ]
           then 
            echo -e " $g successfully created the zip files that are greaterthan $days $n"
                while read -r filepath
                  do 
-                    echo -e " $r deleteting files after zipping from : $filepath $n" &>>log_filename
+                    echo -e " $r deleteting files after zipping from : $filepath $n" &>>$log_filename
                      rm -rf $filepath
                      echo -e "$r deleted files from path : $filepath $n"
                      done <<< $files
